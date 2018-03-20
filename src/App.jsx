@@ -25,6 +25,18 @@ class App extends Component {
     }
   }
 
+addNewMessage = (messageText) => {
+  const newMessageObj = {
+    username: this.state.currentUser.name,
+    content: messageText
+  };
+  const newMessage = this.state.messages.concat(newMessageObj);
+
+  this.setState({
+    messages: newMessage
+  });
+}
+
 componentDidMount() {
   console.log("componentDidMount <App />");
   setTimeout(() => {
@@ -38,16 +50,13 @@ componentDidMount() {
   }, 3000);
 }
 
-render() {
-  // more code here..
-}
 
   render() {
     return (
       <main>
         <NavBar />
         <MessageList messages={this.state.messages}/>
-        <ChatBar user={this.state.currentUser.name}/>
+        <ChatBar currentUser={this.state.currentUser} newMessage={this.addNewMessage} />
       </main>
     );
   }
