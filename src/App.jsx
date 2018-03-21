@@ -30,19 +30,16 @@ addNewMessage = (messageText) => {
     username: this.state.currentUser.name,
     content: messageText
   };
-  const newMessage = this.state.messages.concat(newMessageObj);
+  //const newMessage = this.state.messages.concat(newMessageObj);
+  this.socket.send(JSON.stringify(newMessageObj));
 
-  this.setState({
-    messages: newMessage
-  });
-
-//this.socket.send(JSON.stringify(newMessageObj));
+  // this.setState({
+  //   messages: newMessage
 }
 
 componentDidMount() {
   this.socket = new WebSocket('ws://localhost:3001');
   this.socket.onopen = (event) => {
-    //this.socket.send('Connected to server');
   }
 //   console.log("componentDidMount <App />");
 
