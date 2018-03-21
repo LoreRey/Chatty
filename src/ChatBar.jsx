@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 
 class ChatBar extends Component {
 
+  onUserNameChange = e => {
+    if (e.key === 'Enter') {
+      this.props.changeUserName(e.target.value);
+    }
+  }
+
   onMessageEnter = e => {
     if (e.key === 'Enter') {
       this.props.newMessage(e.target.value);
@@ -12,7 +18,7 @@ class ChatBar extends Component {
   render() {
     return (
       <footer className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.props.currentUser.name} />
+        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.username} onKeyPress={this.onUserNameChange} />
         <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyPress={this.onMessageEnter} />
       </footer>
     );
@@ -20,5 +26,5 @@ class ChatBar extends Component {
 
 }
 
-
 export default ChatBar;
+
