@@ -27,7 +27,6 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
 
 ws.on('message', (message) => {
-  //console.log('received ', JSON.parse(message));
   const msgObj = JSON.parse(message);
   let newMsg = {
     id: uuidv1(),
