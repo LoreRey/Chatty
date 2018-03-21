@@ -11,6 +11,7 @@ class MessageList extends Component {
       key={i}
       username={message.username}
       content={message.content}
+      type={message.type}
      />
      );
     });

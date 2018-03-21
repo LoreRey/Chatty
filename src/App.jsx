@@ -15,6 +15,13 @@ class App extends Component {
   }
 
 changeUserName = (inputName) => {
+  const oldUser = this.state.currentUser.name;
+  const newUser = {
+    type: 'postNotification',
+    content: `${oldUser} has changed their name to ${inputName}`
+  }
+  this.socket.send(JSON.stringify(newUser));
+
   const user = {name: inputName}
   this.setState({currentUser: user});
 }
@@ -22,6 +29,7 @@ changeUserName = (inputName) => {
 
 addNewMessage = (messageText) => {
   const newMessageObj = {
+    type: 'postMessage',
     username: this.state.currentUser.name,
     content: messageText
   };
