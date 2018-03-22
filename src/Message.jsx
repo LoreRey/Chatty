@@ -6,7 +6,7 @@ class Message extends Component {
     switch(type) {
       case 'incomingMessage':
         return (<li className="message">
-          <span className="message-username">{this.props.username} </span>
+          <span className="message-username" style={{color:this.props.usercolor}}> {this.props.username} </span>
           <span className="message-content">{this.props.content} </span>
         </li>);
       case 'incomingNotification':

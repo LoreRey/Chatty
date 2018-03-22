@@ -9,11 +9,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {name: 'Bob'},
+      currentUser: {name: 'Bob', userColor: '#000000'},
       messages: [],
       userCount: 0
     };
   }
+
+getUserColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random()* 16)];
+  }
+  return color;
+}
+
 
 changeUserName = (inputName) => {
   const oldUser = this.state.currentUser.name;
@@ -23,7 +33,7 @@ changeUserName = (inputName) => {
   }
   this.socket.send(JSON.stringify(newUser));
 
-  const user = {name: inputName}
+  const user = {name: inputName, userColor: this.getUserColor()}
   this.setState({currentUser: user});
 }
 
@@ -32,7 +42,8 @@ addNewMessage = (messageText) => {
   const newMessageObj = {
     type: 'postMessage',
     username: this.state.currentUser.name,
-    content: messageText
+    content: messageText,
+    usercolor: this.state.currentUser.userColor
   };
   this.socket.send(JSON.stringify(newMessageObj));
 }
