@@ -40,9 +40,9 @@ wss.on('connection', (ws) => {
       type: 'incomingMessage',
       id: uuidv1(),
       username: msgObj.username,
-      content: msgObj.content
+      content: msgObj.content,
+      usercolor: msgObj.usercolor
     };
-    //console.log(JSON.stringify(newMsg))
     wss.broadcast(JSON.stringify(newMsg));
     } else if (msgObj.type === 'postNotification' || msgObj.type === 'userCount') {
     let notfObj = {
