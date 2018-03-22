@@ -1,21 +1,26 @@
 import React, {Component} from 'react';
 
 class Message extends Component {
+
+  message = (type) => {
+    switch(type) {
+      case 'incomingMessage':
+        return (<li className="message">
+          <span className="message-username">{this.props.username} </span>
+          <span className="message-content">{this.props.content} </span>
+        </li>);
+      case 'incomingNotification':
+      case 'userCount':
+        return (<li className="message system">
+          <span className="message-content">{this.props.content} </span>
+        </li>);
+      default:
+        console.log("type not defined")
+    };
+  }
+
   render() {
-    if (this.props.type === 'incomingMessage') {
-    return (
-      <li className="message">
-        <span className="message-username">{this.props.username} </span>
-        <span className="message-content">{this.props.content} </span>
-      </li>
-    );
-    } else if (this.props.type === 'incomingNotification') {
-    return (
-      <li className="message system">
-        <span className="message-content">{this.props.content} </span>
-      </li>
-    );
-    }
+    return this.message(this.props.type)
   }
 }
 

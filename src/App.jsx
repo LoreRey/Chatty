@@ -10,7 +10,8 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: {name: 'Bob'},
-      messages: []
+      messages: [],
+      userCount: 0
     };
   }
 
@@ -43,10 +44,10 @@ componentDidMount() {
 
   this.socket.onmessage = (event) => {
     const newMessage = JSON.parse(event.data);
-    const newMessages = this.state.messages.concat(newMessage);
-      this.setState({
-        messages: newMessages
-      });
+    this.setState({messages: this.state.messages.concat(newMessage)});
+    if (newMessage.type === "userCount") {
+      this.setState({userCount: newMessage.userCount})
+    }
   }
 }
 
@@ -54,7 +55,7 @@ componentDidMount() {
   render() {
     return (
       <main>
-        <NavBar />
+        <NavBar userCount={this.state.userCount} />
         <MessageList messages={this.state.messages} />
         <ChatBar currentUser={this.state.currentUser} changeUserName={this.changeUserName} newMessage={this.addNewMessage} />
       </main>
