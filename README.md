@@ -1,41 +1,17 @@
-React Boilerplate
-=====================
+#Chatty
 
-A minimal and light dev environment for ReactJS.
+A real-time chat app that allows users to send and receive messages/notifications, change their username, and view the number of online users. Built using React, Node, Webpack and Babel.
 
-### Usage
+## Screenshots
 
-Clone the boilerplate and create your own git repo.
+When users join the chat room, a notification is sent that a 'user has joined' and/or has changed their username. User count on nav bar dictates the number of users online. Also, username colours are generated for every user.
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+!["When users join the chat room, a notification is sent to all users that a 'user has joined' and/or has changed their username. User count on nav bar dictates the number of users online. Also, username colours are generated for every user."]()
 
-Install the dependencies and start the server.
+When a user leaves the chat room, a notification stating 'user has left' is sent to all users. User count on nav bar gets updated as well.
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
+!["When a user leaves the chat room, a notification stating 'user has left' is sent to all users. User count on nav bar gets updated as well."]()
 
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
 
 ### Dependencies
 
@@ -43,3 +19,15 @@ npm run lint
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+
+##Install the dependencies and start the server.
+
+```
+npm install
+npm start
+open http://localhost:3000
+```
+
+
+
+
