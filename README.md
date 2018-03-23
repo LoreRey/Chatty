@@ -34,7 +34,7 @@ WebSockets Server
 * "uuid": "^3.2.1",
 * "ws": "5.1.0"
 
-##Install the dependencies and start the server.
+## Install the dependencies and start the server.
 
 ```
 npm install
